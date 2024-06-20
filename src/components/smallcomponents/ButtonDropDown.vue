@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button @click="toggleMenu" class="rounded create-or-add ml-2 h-10 w-48 text-white text-xs font-bold shadow-black shadow-md">{{btnText}}</button>
+        <button @click="toggleMenu" class="rounded create-or-add ml-2 h-10 w-48 text-white text-xs font-bold shadow-black shadow-md">{{btnText}} <i :class="ICON_PREFIX + 'plus'" class="text-md pl-2"></i></button>
         <ul v-if="showMenu" class="bg-gray-800 w-48 rounded ml-2 mt-2 py-2 flex flex-col justify-evenly text-gray-400">
             <li v-for="item in items" :key="item" class="text-center rounded mx-4 my-1 py-1 hover:bg-gray-700 hover:text-gray-100 cursor-pointer">
                 <a @click="selectItem(item)">{{item}}</a>
@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import { ICON_PREFIX } from '/src/assets/data/globals.json'
+
 export default {
   props: {
     btnText: String,
@@ -21,6 +23,7 @@ export default {
   data() {
     return {
       showMenu: false,
+      ICON_PREFIX
     };
   },
   methods: {
